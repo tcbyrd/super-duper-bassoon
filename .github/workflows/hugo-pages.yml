@@ -1,0 +1,56 @@
+# This is the minimum workflow to build and deploy a Jekyll site to GitHub Pages
+name: Deploy Jekyll site to Pages
+
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# This sets the permissions of the GITHUB_TOKEN to allow us to deploy to Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.99.0
+    steps:
+      - name: Install Hugo CLI
+        run: |
+          sudo wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.deb
+          sudo dpkg -i hugo_${HUGO_VERSION}_Linux-64bit.deb
+      - name: Print Hugo Version
+        run: |
+          printf "Hugo Version:\n$(hugo version)\n"
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build page with Hugo
+        run: |
+          hugo
+      - name: Upload Pages artifact
+        uses: paper-spa/upload-pages-artifact@main
+        with:
+          directory: "public"
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@main
