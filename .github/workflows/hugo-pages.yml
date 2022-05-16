@@ -1,5 +1,5 @@
-# This is the minimum workflow to build and deploy a Jekyll site to GitHub Pages
-name: Deploy Jekyll site to Pages
+# This is the minimum workflow to build and deploy a Hugo site to GitHub Pages
+name: Deploy Hugo site to Pages
 
 
 # Controls when the workflow will run
