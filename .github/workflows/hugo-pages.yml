@@ -37,6 +37,8 @@ jobs:
           printf "Hugo Version:\n$(hugo version)\n"
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          submodules: true
       - name: Build page with Hugo
         run: |
           hugo
