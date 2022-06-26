@@ -28,4 +28,5 @@ The in-progress actions should cancel the build
 
 Then
 
+The deployment will complete once i stop typing long enough
 
