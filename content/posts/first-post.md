@@ -24,4 +24,8 @@ then wait
 
 then type some more
 
+The in-progress actions should cancel the build
+
+Then
+
 
