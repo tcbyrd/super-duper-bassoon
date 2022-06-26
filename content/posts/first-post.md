@@ -30,3 +30,4 @@ Then
 
 The deployment will complete once i stop typing long enough
 
+Now deploying from nvim because why not
