@@ -14,4 +14,4 @@ hideComments = false
 
 # Hello Hugo World!
 
-Testing, 1 2 3 4 5 6 7
+Testing, 1 2 3
