@@ -1,4 +1,4 @@
-baseURL = 'https://tcbyrd.dev/super-duper-bassoon/'
+# baseURL = 'https://tcbyrd.dev/super-duper-bassoon/'
 languageCode = 'en-us'
 title = 'Hugo Site on Pages'
 theme = "terminal"
