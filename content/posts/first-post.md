@@ -22,4 +22,6 @@ If i type some here
 
 then wait
 
+then type some more
+
 
